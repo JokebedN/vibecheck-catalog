@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VibeCheck 🎵</title>
+
+    <!-- google fonts, playfair display for the title, outfit for everything else -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+    <!-- my stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <!-- header, the top section with my title and subtitle -->
+    <header class="main-header">
+      <h1 class="title">🎵 VibeCheck</h1>
+      <p class="subtitle">Your Gospel • Afrobeats • R&B Mood Board</p>
+    </header>
+
+    <!-- stats bar, updates live when user filters or searches -->
+    <div class="stats-bar">
+      <span id="stats-text">20 songs • 5 genres • Loading...</span>
+    </div>
+
+    <!-- mood picker, user clicks how they feel and songs filter instantly -->
+    <section class="mood-section">
+      <h2 class="mood-title">How are you feeling right now?</h2>
+      <div class="mood-buttons">
+        <button class="mood-btn" onclick="filterByMood('All')">✨ All</button>
+        <button class="mood-btn" onclick="filterByMood('Peaceful')">😌 Peaceful</button>
+        <button class="mood-btn" onclick="filterByMood('Worshipful')">🙏 Worshipful</button>
+        <button class="mood-btn" onclick="filterByMood('Joyful')">💛 Joyful</button>
+        <button class="mood-btn" onclick="filterByMood('Hopeful')">🌤️ Hopeful</button>
+        <button class="mood-btn" onclick="filterByMood('Grateful')">🤍 Grateful</button>
+        <button class="mood-btn" onclick="filterByMood('Chill')">🌿 Chill</button>
+        <button class="mood-btn" onclick="filterByMood('Romantic')">🌸 Romantic</button>
+        <button class="mood-btn" onclick="filterByMood('Emotional')">💔 Emotional</button>
+        <button class="mood-btn" onclick="filterByMood('Happy')">😊 Happy</button>
+      </div>
+    </section>
+
+    <!-- controls, search bar, genre dropdown, sort dropdown, view toggle -->
+    <section class="controls">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search by song or artist..."
+        oninput="searchSongs()"
+      />
+      <select id="genreFilter" onchange="filterByGenre()">
+        <option value="All">All Genres</option>
+        <option value="Gospel">Gospel</option>
+        <option value="Afrogospel">Afrogospel</option>
+        <option value="Afrobeats">Afrobeats</option>
+        <option value="R&B">R&B</option>
+        <option value="UK Rap">UK Rap</option>
+      </select>
+      <select id="sortSelect" onchange="sortSongs()">
+        <option value="default">Sort By...</option>
+        <option value="title">Title A-Z</option>
+        <option value="artist">Artist A-Z</option>
+        <option value="year">Year</option>
+      </select>
+      <button class="view-toggle-btn" onclick="toggleView()">
+        📌 Mood Board View
+      </button>
+    </section>
+
+    <!-- song cards grid, javascript fills this in automatically -->
+    <main id="card-container" class="grid-view"></main>
+
+    <!-- my playlist section, shows songs the user has hearted -->
+    <section class="playlist-section">
+      <h2 class="playlist-title">❤️ My Playlist <span id="playlist-count">(0 songs)</span></h2>
+      <div id="playlist-container" class="playlist-container">
+        <p class="empty-playlist">Click the ❤️ on any song to add it here!</p>
+      </div>
+    </section>
+
+    <!-- scripts.js runs last so the HTML is fully loaded before javascript starts -->
+    <script src="scripts.js"></script>
+  </body>
+</html>
